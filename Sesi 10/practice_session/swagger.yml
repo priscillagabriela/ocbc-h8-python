@@ -1,0 +1,694 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /avoregion:
+    get:
+      operationId: avoregion.read_all
+      tags:
+        - Avo Region
+      summary: Read the entire set of avo region
+      description: Read the entire set of avo region
+      responses:
+        200:
+          description: Successfully read avo region set operation
+          schema:
+            type: array
+            items:
+              properties:
+                regionid:
+                  type: integer
+                  description: Id of the avo region
+                region:
+                  type: string
+                  description: Name of the avo region
+                avocados:
+                  type: array
+                  items:
+                    properties:
+                      avoid:
+                        type: integer
+                        description: Id of avocado
+                      date:
+                        type: string
+                        description: Date of avocado
+                      avgprice:
+                        type: integer
+                        description: Average price of avocado
+                      totalvol:
+                        type: integer
+                        description: Total volume of avocado
+                      avo_a:
+                        type: integer
+                        description: Avo a value
+                      avo_b:
+                        type: integer
+                        description: Avo b value
+                      avo_c:
+                        type: integer
+                        description: Avo c value
+                      type:
+                        type: integer
+                        description: Id of avo type
+                      regionid:
+                        type: integer
+                        description: Id of avo region
+
+    post:
+      operationId: avoregion.create
+      tags:
+        - Avo Region
+      summary: Create an avo region
+      description: Create a new avo region
+      parameters:
+        - name: avo region
+          in: body
+          description: Avo region to create
+          required: True
+          schema:
+            type: object
+            properties:
+              regionid:
+                type: integer
+                description: Id of avo region to create
+              region:
+                type: string
+                description: Name of avo region to create
+      responses:
+        201:
+          description: Successfully created avo region
+          schema:
+            properties:
+              regionid:
+                type: integer
+                description: Id of avo region
+              region:
+                type: string
+                description: Name of avo region
+
+  /avoregion/{regionid}:
+    get:
+      operationId: avoregion.read_one
+      tags:
+        - Avo Region
+      summary: Read one avo region
+      description: Read one avo region
+      parameters:
+        - name: regionid
+          in: path
+          description: Id of the avo region to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read avo region from avo regions data operation
+          schema:
+            type: object
+            properties:
+              regionid:
+                type: integer
+                description: Id of avo region
+              region:
+                type: string
+                description: Name of avo region
+
+              avocados:
+                type: array
+                items:
+                  properties:
+                    avoid:
+                      type: integer
+                      description: Id of avocado
+                    date:
+                      type: string
+                      description: Date of avocado
+                    avgprice:
+                      type: integer
+                      description: Average price of avocado
+                    totalvol:
+                      type: integer
+                      description: Total volume of avocado
+                    avo_a:
+                      type: integer
+                      description: Avo a value
+                    avo_b:
+                      type: integer
+                      description: Avo b value
+                    avo_c:
+                      type: integer
+                      description: Avo c value
+                    type:
+                      type: integer
+                      description: Id of avo type
+                    regionid:
+                      type: integer
+                      description: Id of avo region
+
+    put:
+      operationId: avoregion.update
+      tags:
+        - Avo Region
+      summary: Update an avo region
+      description: Update an avo region
+      parameters:
+        - name: regionid
+          in: path
+          description: Id of the avo region to update
+          type: integer
+          required: True
+        - name: avoregion
+          in: body
+          schema:
+            type: object
+            properties:
+              regionid:
+                type: integer
+                description: Id of avo region
+              region:
+                type: string
+                description: Name of avo region
+      responses:
+        200:
+          description: Successfully updated avo region
+          schema:
+            properties:
+              regionid:
+                type: integer
+                description: Id of avo region
+              region:
+                type: string
+                description: Name of avo region
+
+    delete:
+      operationId: avoregion.delete
+      tags:
+        - Avo Region
+      summary: Delete an avo region from the avo regions list
+      description: Delete an avo region
+      parameters:
+        - name: regionid
+          in: path
+          type: integer
+          description: Id of avo region to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted an avo region
+  
+  /avotype:
+    get:
+      operationId: avotype.read_all
+      tags:
+        - Avo Type
+      summary: Read the entire set of avo type
+      description: Read the entire set of avo type
+      responses:
+        200:
+          description: Successfully read avo type set operation
+          schema:
+            type: array
+            items:
+              properties:
+                typeid:
+                  type: integer
+                  description: Id of the avo type
+                type:
+                  type: string
+                  description: Name of the avo type
+                avocados:
+                  type: array
+                  items:
+                    properties:
+                      avoid:
+                        type: integer
+                        description: Id of avocado
+                      date:
+                        type: string
+                        description: Date of avocado
+                      avgprice:
+                        type: integer
+                        description: Average price of avocado
+                      totalvol:
+                        type: integer
+                        description: Total volume of avocado
+                      avo_a:
+                        type: integer
+                        description: Avo a value
+                      avo_b:
+                        type: integer
+                        description: Avo b value
+                      avo_c:
+                        type: integer
+                        description: Avo c value
+                      type:
+                        type: integer
+                        description: Id of avo type
+                      regionid:
+                        type: integer
+                        description: Id of avo region
+
+    post:
+      operationId: avotype.create
+      tags:
+        - Avo Type
+      summary: Create an avo type
+      description: Create a new avo type
+      parameters:
+        - name: avo type
+          in: body
+          description: Avo type to create
+          required: True
+          schema:
+            type: object
+            properties:
+              typeid:
+                type: integer
+                description: Id of the avo type
+              type:
+                type: string
+                description: Name of the avo type
+      responses:
+        201:
+          description: Successfully created avo type
+          schema:
+            properties:
+              typeid:
+                type: integer
+                description: Id of the avo type
+              type:
+                type: string
+                description: Name of the avo type
+
+  /avotype/{typeid}:
+    get:
+      operationId: avotype.read_one
+      tags:
+        - Avo Type
+      summary: Read one avo type
+      description: Read one avo type
+      parameters:
+        - name: typeid
+          in: path
+          description: Id of the avo type to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read avo type from avo types data operation
+          schema:
+            type: object
+            properties:
+              typeid:
+                type: integer
+                description: Id of the avo type
+              type:
+                type: string
+                description: Name of the avo type
+
+              avocados:
+                type: array
+                items:
+                  properties:
+                    avoid:
+                      type: integer
+                      description: Id of avocado
+                    date:
+                      type: string
+                      description: Date of avocado
+                    avgprice:
+                      type: integer
+                      description: Average price of avocado
+                    totalvol:
+                      type: integer
+                      description: Total volume of avocado
+                    avo_a:
+                      type: integer
+                      description: Avo a value
+                    avo_b:
+                      type: integer
+                      description: Avo b value
+                    avo_c:
+                      type: integer
+                      description: Avo c value
+                    type:
+                      type: integer
+                      description: Id of avo type
+                    regionid:
+                      type: integer
+                      description: Id of avo region
+
+    put:
+      operationId: avotype.update
+      tags:
+        - Avo Type
+      summary: Update an avo type
+      description: Update an avo type
+      parameters:
+        - name: typeid
+          in: path
+          description: Id of the avo type to update
+          type: integer
+          required: True
+        - name: avotype
+          in: body
+          schema:
+            type: object
+            properties:
+              typeid:
+                type: integer
+                description: Id of the avo type
+              type:
+                type: string
+                description: Name of the avo type
+      responses:
+        200:
+          description: Successfully updated avo type
+          schema:
+            properties:
+              typeid:
+                type: integer
+                description: Id of avo type
+              region:
+                type: string
+                description: Name of avo type
+
+    delete:
+      operationId: avotype.delete
+      tags:
+        - Avo Type
+      summary: Delete an avo type from the avo types list
+      description: Delete an avo type
+      parameters:
+        - name: typeid
+          in: path
+          type: integer
+          description: Id of avo type to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted an avo type
+
+  /avocados:
+    get:
+      operationId: avocados.read_all
+      tags:
+        - Avocados
+      summary: Read the entire set of avocados for all avo region and all avo type
+      description: Read the entire set of avocados for all avo region and all avo type
+      responses:
+        200:
+          description: Successfully read avocados for all avo regions and all avo types operation
+          schema:
+            type: array
+            items:
+              properties:
+                avoid:
+                  type: integer
+                  description: Id of avocado
+                date:
+                  type: string
+                  description: Date of avocado
+                avgprice:
+                  type: integer
+                  description: Average price of avocado
+                totalvol:
+                  type: integer
+                  description: Total volume of avocado
+                avo_a:
+                  type: integer
+                  description: Avo a value
+                avo_b:
+                  type: integer
+                  description: Avo b value
+                avo_c:
+                  type: integer
+                  description: Avo c value
+                type:
+                  type: integer
+                  description: Id of avo type
+                regionid:
+                  type: integer
+                  description: Id of avo region
+                avoregion:
+                  type: object
+                  properties:
+                    regionid:
+                      type: integer
+                      description: Id of avo region
+                    region:
+                      type: string
+                      description: Name of avo region
+                avotype:
+                  type: object
+                  properties:
+                    typeid:
+                      type: integer
+                      description: Id of avo type
+                    type:
+                      type: string
+                      description: Name of avo type
+
+
+  /avoregion/{regionid}/avotype/{typeid}/avocados:
+    post:
+      operationId: avocados.create
+      tags:
+        - Avocados
+      summary: Create an avocado associated with an avo region and avo type
+      description: Create an avocado associated with an avo region and avo type
+      parameters:
+        - name: regionid
+          in: path
+          description: Id of avo region associated with avocados
+          type: integer
+          required: True
+        - name: typeid
+          in: path
+          description: Id of avo type associated with avocados
+          type: integer
+          required: True
+        - name: avocado
+          in: body
+          description: Content of the avocado to create
+          required: True
+          schema:
+            type: object
+            properties:
+              date:
+                type: string
+                description: Date of avocado
+              avgprice:
+                type: integer
+                description: Average price of avocado
+              totalvol:
+                type: integer
+                description: Total volume of avocado
+              avo_a:
+                type: integer
+                description: Avo a value
+              avo_b:
+                type: integer
+                description: Avo b value
+              avo_c:
+                type: integer
+                description: Avo c value
+      responses:
+        201:
+          description: Successfully created an avocado
+          schema:
+            properties:
+              regionid:
+                type: integer
+                description: Id of the avo region associated with the avocado
+              typeid:
+                type: integer
+                description: Id of the avo type associated with the avocado
+              date:
+                type: string
+                description: Date of avocado
+              avgprice:
+                type: integer
+                description: Average price of avocado
+              totalvol:
+                type: integer
+                description: Total volume of avocado
+              avo_a:
+                type: integer
+                description: Avo a value
+              avo_b:
+                type: integer
+                description: Avo b value
+              avo_c:
+                type: integer
+                description: Avo c value
+
+  /avoregion/{regionid}/avotype/{typeid}/avocados/{avoid}:
+    get:
+      operationId: avocados.read_one
+      tags:
+        - Avocados
+      summary: Read a particular avocado associated with an avo region and avo type
+      description: Read a particular avocado associated with an avo region and avo type
+      parameters:
+        - name: regionid
+          in: path
+          description: Id of avo region associated with avocado
+          type: integer
+          required: True
+        - name: typeid
+          in: path
+          description: Id of avo type associated with avocado
+          type: integer
+          required: True
+        - name: avoid
+          in: path
+          description: Id of avocado
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read avocado for an avo region and avo type
+          schema:
+            type: object
+            properties:
+              regionid:
+                type: integer
+                description: Id of avo region associated with avocado
+              typeid:
+                type: integer
+                description: Id of avo type associated with avocado
+              avoid:
+                type: integer
+                description: Id of avocado
+              date:
+                type: string
+                description: Date of avocado
+              avgprice:
+                type: integer
+                description: Average price of avocado
+              totalvol:
+                type: integer
+                description: Total volume of avocado
+              avo_a:
+                type: integer
+                description: Avo a value
+              avo_b:
+                type: integer
+                description: Avo b value
+              avo_c:
+                type: integer
+                description: Avo c value
+
+    put:
+      operationId: avocados.update
+      tags:
+        - Avocados
+      summary: Update an avocado associated with an avo region and avo type
+      description: Update an avocado associated with an avo region and avo type
+      parameters:
+        - name: regionid
+          in: path
+          description: Id of avo region associated with avocado
+          type: integer
+          required: True
+        - name: typeid
+          in: path
+          description: Id of avo type associated with avocado
+          type: integer
+          required: True
+        - name: avoid
+          in: path
+          description: Id of avocado
+          type: integer
+          required: True
+        - name: avocado
+          in: body
+          schema:
+            type: object
+            properties:
+              date:
+                type: string
+                description: Date of avocado
+              avgprice:
+                type: integer
+                description: Average price of avocado
+              totalvol:
+                type: integer
+                description: Total volume of avocado
+              avo_a:
+                type: integer
+                description: Avo a value
+              avo_b:
+                type: integer
+                description: Avo b value
+              avo_c:
+                type: integer
+                description: Avo c value
+      responses:
+        200:
+          description: Successfully updated avocado
+          schema:
+            properties:
+              regionid:
+                type: integer
+                description: Id of avo region associated with avocado
+              typeid:
+                type: integer
+                description: Id of avo type associated with avocado
+              avoid:
+                type: integer
+                description: Id of avocado
+              date:
+                type: string
+                description: Date of avocado
+              avgprice:
+                type: integer
+                description: Average price of avocado
+              totalvol:
+                type: integer
+                description: Total volume of avocado
+              avo_a:
+                type: integer
+                description: Avo a value
+              avo_b:
+                type: integer
+                description: Avo b value
+              avo_c:
+                type: integer
+                description: Avo c value
+
+    delete:
+      operationId: avocados.delete
+      tags:
+        - Avocados
+      summary: Delete an avocado associated with an avo region and avo type
+      description: Delete an avocado associated with an avo region and avo type
+      parameters:
+        - name: regionid
+          in: path
+          description: Id of avo region associated with avocado
+          type: integer
+          required: True
+        - name: typeid
+          in: path
+          description: Id of avo type associated with avocado
+          type: integer
+          required: True
+        - name: avoid
+          in: path
+          description: Id of avocado
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully deleted an avocado
